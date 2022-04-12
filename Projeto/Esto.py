@@ -49,7 +49,7 @@ class Esto(object):
             for local in l:
                 self.quantidade = local[0]
                 self.id = local[1]
-                self.nome = local[1]
+                self.nome = local[2]
             curso.close()
             return "Busca realizada com sucesso!"
         except:
