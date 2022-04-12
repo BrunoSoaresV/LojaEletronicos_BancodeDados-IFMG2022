@@ -161,7 +161,6 @@ if __name__ == "__main__":
             use.cpf = self.cpf1.get()
             use.ctps = self.ctps1.get()
             self.nome1.delete(0, END)
-            self.testar["text"] = use.inserirMercadoria()
             self.nota1.delete(0, END)
             self.ID.delete(0, END)
             self.garantia1.delete(0, END)
@@ -169,11 +168,12 @@ if __name__ == "__main__":
             self.quantidade1.delete(0, END)
             self.cpf1.delete(0, END)
             self.ctps1.delete(0, END)
+            self.testar["text"] = use.inserirMercadoria()
+
 
 
         def altMercadoria(self):
             use = Merc()
-            self.testar["text"] = use.attMercadoria()
             use.nome = self.nome1.get()
             self.nome1.delete(0, END)
             use.nota = self.nota1.get()
@@ -190,6 +190,7 @@ if __name__ == "__main__":
             self.cpf1.delete(0, END)
             use.ctps = self.ctps1.get()
             self.ctps1.delete(0, END)
+            self.testar["text"] = use.attMercadoria()
 
         def excluirMercadoria(self):
             use = Merc()
