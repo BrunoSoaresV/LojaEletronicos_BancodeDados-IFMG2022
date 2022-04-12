@@ -13,15 +13,19 @@ class Merc(object):
         self.ctps= ctps
         self.cpf= cpf
     def inserirMercadoria(self):
-        curso = BD.conexao.cursor()
-        curso.execute("INSERT INTO bruno_verissimo.mercadoria (nome, nota, id, garantia, dtcompra, quantidade, pfpj, ctps) VALUES (%s, %s, %s,%s, %s, %s, %s, %s);",(self.nome, self.nota, self.id, self.garantia, self.data, self.quantidade, self.cpf, self.ctps))
-        BD.conexao.commit()
-        curso.close()
+        try:
+            curso = BD.conexao.cursor()
+            curso.execute("INSERT INTO bruno_verissimo.mercadoria (nome, nota, id, garantia, dtcompra, quantidade, pfpj, ctps) VALUES (%s, %s, %s,%s, %s, %s, %s, %s);",(self.nome, self.nota, self.id, self.garantia, self.data, self.quantidade, self.cpf, self.ctps))
+            BD.conexao.commit()
+            curso.close()
+            return "Inserção realizada com sucesso!"
+        except:
+            return "Ocorreu algum erro na inserção!"
 
 
     def attMercadoria(self):
         curso = BD.conexao.cursor()
-        curso.execute("UPDATE bruno_verissimo.mercadoria SET nome=%s, nota=%s, Garantia=%s, dtcompra=%s, Quantidade=%s, pfpj=%s, CTPS=%s WHERE id=%s;",(self.nome, self.nota,self.garantia, self.data, self.quantidade, self.ctps,self.cpf, self.id ))
+        curso.execute("UPDATE bruno_verissimo.mercadoria SET nome=%s, nota=%s, garantia=%s, dtcompra=%s, quantidade=%s, pfpj=%s, ctps=%s WHERE id=%s;",(self.nome, self.nota,self.garantia, self.data, self.quantidade,self.ctps,self.cpf, self.id ))
         BD.conexao.commit()
         curso.close()
 
