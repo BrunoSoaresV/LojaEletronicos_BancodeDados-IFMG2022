@@ -23,28 +23,36 @@ class Esto(object):
     def attEstoque(self):
         try:
             curso = BD.conexao.cursor()
-            curso.execute("UPDATE bruno_verissimo.estoque SET quantidade=%s, nome=%s WHERE id=%s;",(self.quantidade, self.nome, self.id))
+            curso.execute("UPDATE bruno_verissimo.estoque SET quantidade=%s, nome=%s WHERE ID=%s;",(self.quantidade, self.nome, self.id))
             BD.conexao.commit()
             curso.close()
             return "Estoque atualizado!"
         except:
             return "Ocorreu um erro na atualização!"
 
+
     def deleteEstoque(self):
-        curso = BD.conexao.cursor()
-        curso.execute("DELETE FROM bruno_verissimo.estoque WHERE id=%s;",(self.id,))
-        BD.conexao.commit()
-        curso.close()
+        try:
+            curso = BD.conexao.cursor()
+            curso.execute("DELETE FROM bruno_verissimo.estoque WHERE ID=%s;",(self.id,))
+            BD.conexao.commit()
+            curso.close()
+            return "Estoque deletado!"
+        except:
+            return "Ocorreu algum erro!"
 
     def selectEstoque(self):
-        curso = BD.conexao.cursor()
-        curso.execute("select * from bruno_verissimo.estoque WHERE id=%s;", (self.id,))
-        l = curso.fetchall()
-        for local in l:
-            self.quantidade = local[0]
-            self.id = local[1]
-            self.nome = local[1]
-        curso.close()
-
+        try:
+            curso = BD.conexao.cursor()
+            curso.execute("select * from bruno_verissimo.estoque WHERE id=%s;", (self.id,))
+            l = curso.fetchall()
+            for local in l:
+                self.quantidade = local[0]
+                self.id = local[1]
+                self.nome = local[1]
+            curso.close()
+            return "Busca realizada com sucesso!"
+        except:
+            return "Ocorreu algum erro!"
 
 
