@@ -115,7 +115,7 @@ if __name__ == "__main__":
                 self.ID.delete(0, END)
             def excluirEsto(self):
                 use = Esto()
-                use.nome = self.n1.get()
+                use.id = self.ID.get()
                 self.testar["text"] = use.deleteEstoque()
                 self.n1.delete(0, END)
                 self.quantidade1.delete(0, END)
