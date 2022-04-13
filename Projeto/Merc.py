@@ -24,10 +24,14 @@ class Merc(object):
 
 
     def attMercadoria(self):
-        curso = BD.conexao.cursor()
-        curso.execute("UPDATE bruno_verissimo.mercadoria SET nome=%s, nota=%s, garantia=%s, dtcompra=%s, quantidade=%s WHERE id=%s;",(self.nome, self.nota,self.garantia, self.data, self.quantidade, self.id ))
-        BD.conexao.commit()
-        curso.close()
+        try:
+            curso = BD.conexao.cursor()
+            curso.execute("UPDATE bruno_verissimo.mercadoria SET nome=%s, nota=%s, garantia=%s, dtcompra=%s, quantidade=%s WHERE id=%s;",(self.nome, self.nota,self.garantia, self.data, self.quantidade, self.id ))
+            BD.conexao.commit()
+            curso.close()
+            return "Mercadoria atualizada com sucesso!"
+        except:
+            return "Ocorreu algum erro na atualização!"
 
 
     def deleteMercadoria(self):
