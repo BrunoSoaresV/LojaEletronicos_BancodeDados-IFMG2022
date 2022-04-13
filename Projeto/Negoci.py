@@ -23,8 +23,7 @@ class Negoci(object):
     def attNegociante(self):
         try:
             curso = BD.conexao.cursor()
-            curso.execute(
-                "UPDATE bruno_verissimo.vendedor SET nome=%s, email=%s, telefone=%s, endereco=%s WHERE ctps=%s;",(self.nome, self.email, self.telefone, self.endereco, self.ctps))
+            curso.execute("UPDATE bruno_verissimo.mercadoria SET nome=%s, nota=%s, garantia=%s, dtcompra=%s, quantidade=%s WHERE id=%s;",(self.nome, self.nota,self.garantia, self.data, self.quantidade, self.id ))
             BD.conexao.commit()
             curso.close()
             return "Negociante atualizado!"
